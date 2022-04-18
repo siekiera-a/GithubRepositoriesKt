@@ -8,20 +8,37 @@ import com.github.tomakehurst.wiremock.client.WireMock.matching
 import com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension
 
-fun WireMockExtension.stubGithubRepositories(username: String = Defaults.username, status: Int = 200) {
+fun WireMockExtension.stubGithubRepositories(
+    username: String = Defaults.username,
+    status: Int = 200,
+    withPagination: Boolean = false
+) {
     stubFor(
         get(urlPathEqualTo(userRepositoriesPath(username)))
             .withQueryParam("page", matching("\\d+"))
             .withQueryParam("per_page", matching("\\d+"))
             .willReturn(
-                aResponse().withStatus(status)
-                    .withHeader("Content-Type", "application/json;charset=UTF-8")
+                aResponse().withStatus(status).apply {
+                        if (withPagination) {
+                            withHeader(
+                                "link",
+                                "<https://api.github.com/user/562236/repos?page=${Config.pageCount}>; rel=\"last\""
+                            )
+                        }
+                    }
+                    .withHeader(
+                        "Content-Type",
+                        "application/json;charset=UTF-8"
+                    )
                     .withBodyFile("repositories-page-{{request.query.page}}.json")
             )
     )
 }
 
-fun WireMockExtension.stubGithubUnsuccessfulResponse(username: String = Defaults.username, status: Int) {
+fun WireMockExtension.stubGithubUnsuccessfulResponse(
+    username: String = Defaults.username,
+    status: Int
+) {
     stubFor(
         get(urlPathEqualTo(userRepositoriesPath(username)))
             .withQueryParam("page", matching("\\d+"))
@@ -46,4 +63,10 @@ private fun userRepositoriesPath(username: String) = "/users/$username/repos"
 
 internal object Defaults {
     const val username = "username"
+}
+
+internal object Config {
+    const val pageCount = 3
+    const val repositoriesCount = 12
+    const val repositoriesPerFile = 4
 }
