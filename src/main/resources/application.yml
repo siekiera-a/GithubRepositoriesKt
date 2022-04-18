@@ -1,0 +1,6 @@
+github-api:
+  url: https://api.github.com
+  per-page: 100
+  headers:
+    accept: application/vnd.github.v3+json
+    token:

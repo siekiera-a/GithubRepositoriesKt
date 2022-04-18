@@ -1,0 +1,26 @@
+[
+  {
+    "id": 198827772,
+    "name": "bigflow",
+    "stargazers_count": 83,
+    "language": "Python"
+  },
+  {
+    "id": 37657635,
+    "name": "camus-compressor",
+    "stargazers_count": 12,
+    "language": "Java"
+  },
+  {
+    "id": 24139228,
+    "name": "cassandra-modeling-kata",
+    "stargazers_count": 36,
+    "language": "Java"
+  },
+  {
+    "id": 452653487,
+    "name": "cosmosdb-utils",
+    "stargazers_count": 2,
+    "language": "C#"
+  }
+]

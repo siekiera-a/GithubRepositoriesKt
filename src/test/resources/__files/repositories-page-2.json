@@ -1,0 +1,26 @@
+[
+  {
+    "id": 24092835,
+    "name": "axion-release-plugin",
+    "stargazers_count": 449,
+    "language": "Groovy"
+  },
+  {
+    "id": 417049741,
+    "name": "banana-split",
+    "stargazers_count": 5,
+    "language": "JavaScript"
+  },
+  {
+    "id": 54539060,
+    "name": "bigcache",
+    "stargazers_count": 5608,
+    "language": "Go"
+  },
+  {
+    "id": 211492127,
+    "name": "bigcache-bench",
+    "stargazers_count": 12,
+    "language": "Go"
+  }
+]

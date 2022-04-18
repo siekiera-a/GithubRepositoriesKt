@@ -1,0 +1,5 @@
+github-api:
+  url: http://localhost:8081
+  per-page: 3
+  headers:
+    accept: application/json
