@@ -115,5 +115,6 @@ tasks.withType<Test> {
 tasks.test {
     filter {
         includeTestsMatching("integration.*")
+        includeTestsMatching("unit.*")
     }
 }
